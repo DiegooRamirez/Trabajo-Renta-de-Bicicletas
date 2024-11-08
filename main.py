@@ -730,7 +730,7 @@ def cantidad_prestamos_xRodada():
         contador_prestamos_xRodada = df_unidades.groupby('Rodada').size().reset_index(name="cantidad_prestamos").sort_values(by="cantidad_prestamos", ascending=False)
         
         # Mostrar el resultado
-        print(contador_prestamos_xRodada)
+        mostrar_reporte_tabulado(["CLAVE DE UNIDAD","COLOR"],contador_prestamos_xRodada)
 
         # Crear gráfica de pastel
         plt.figure(figsize=(8, 8))
@@ -755,7 +755,7 @@ def cantidad_prestamos_xColor():
         contador_prestamos_xColor = df_unidades.groupby('Color').size().reset_index(name="cantidad_prestamos").sort_values(by="cantidad_prestamos", ascending=False)
         
         # Mostrar el resultado
-        print(contador_prestamos_xColor)
+        mostrar_reporte_tabulado(["CLAVE DE UNIDAD","RODADA"],contador_prestamos_xColor)
         colores_asignados = {'Rojo': '#ff0000', 'Verde': '#11e120', 'Azul': '#2016f0', 'Amarillo': '#f3ff00',\
          'Naranja': '#ff6c00', 'Morado': '#760dd3'} 
         colores = [colores_asignados[color] for color in contador_prestamos_xColor['Color']]
@@ -790,8 +790,7 @@ def cantidad_prestamos_xDiaSemana():
         contador_prestamos_xDiaSemana = contador_prestamos_xDiaSemana.sort_values('DiaSemana')
 
         print("\nCantidad de préstamos totales acumulados por día de la semana\n")
-        print(contador_prestamos_xDiaSemana)
-
+        mostrar_reporte_tabulado(["DOMINGO","LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO"],contador_prestamos_xDiaSemana)
 
         # Crear gráfica de barras
         plt.figure(figsize=(10, 6))
