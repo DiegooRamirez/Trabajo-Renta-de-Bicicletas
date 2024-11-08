@@ -714,8 +714,8 @@ def ranking_clientes():
         ranking = ranking[['CantidadRentas', 'ClaveCliente', 'NombreCompleto', 'Telefono']]
         
         # Mostrar el ranking
-        print(ranking)
-    
+        mostrar_reporte_tabulado(["CANTIDAD DE RENTAS","CLAVE DEL CLIENTE", "NOMBRE COMPLETO", "TELEFONO"],ranking)
+
     except Exception as e:
         print(f"Error: {e}")
 
